@@ -550,19 +550,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* ══════════════════════════════════════════════════════
-           NOTIFY
-      ═══════════════════════════════════════════════════════════ */}
-      <section className="border-t border-line bg-mineral">
-        <div className="px-6 py-16 text-center sm:px-10 md:px-16 lg:px-24 xl:px-32">
-          <div className="reveal in mx-auto max-w-lg">
-            <h2 className="mb-2.5 font-serif text-[clamp(22px,3vw,28px)] font-normal">Get Notified When We Open Near You</h2>
-            <p className="mb-7 text-sm text-stone">Be first to know about new kiosks and menu drops:</p>
-            <NewsletterForm />
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
