@@ -33,26 +33,6 @@ function BrandMark() {
   );
 }
 
-function NewsletterForm({ compact = false }: { compact?: boolean }) {
-  return (
-    <form className="newsletter inline-flex items-center gap-2.5 rounded-full bg-mineral py-1.5 pl-6 pr-1.5">
-      <input
-        type="email"
-        required
-        placeholder="Email"
-        className={`${compact ? "w-40" : "w-52"} bg-transparent text-sm text-ink outline-none placeholder:text-stone`}
-      />
-      <button
-        type="submit"
-        aria-label="Subscribe"
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-opacity hover:opacity-85"
-      >
-        &rarr;
-      </button>
-    </form>
-  );
-}
-
 export default function Footer({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
@@ -102,12 +82,6 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
   return (
     <section className="bg-mineral px-4 pb-4 pt-16 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
       <div className="overflow-hidden rounded-[28px] bg-white">
-        <div className="relative overflow-hidden px-6 py-28 text-center sm:px-10 md:px-16 lg:px-24 xl:px-32">
-          <h2 className="mb-2.5 font-serif text-[clamp(24px,3.4vw,30px)] font-normal">Get Notified When We Open Near You</h2>
-          <p className="mb-7 text-sm text-stone">Be first to know about new kiosks and menu drops:</p>
-          <NewsletterForm />
-        </div>
-
         <footer className="border-t border-line pb-7 pt-16">
           <div className="px-6 sm:px-10 md:px-16 lg:px-24 xl:px-32">
             <div className="flex flex-wrap justify-between gap-10">
@@ -116,8 +90,7 @@ export default function Footer({ compact = false }: { compact?: boolean }) {
                   <BrandMark />
                   <span className="text-[20px] font-semibold tracking-[0.2em]">NATURESIP</span>
                 </div>
-                <p className="mb-4 text-[13px] text-stone">Get notified when we open near you:</p>
-                <NewsletterForm compact />
+                <p className="text-[13px] text-stone">Pure refills, fruit slushies, and fresh-cut fruit in Soweto.</p>
               </div>
 
               <div className="flex gap-16">
