@@ -623,6 +623,15 @@ body {
   user-select: none;
 }
 
+@media (max-width: 640px) {
+  .page-watermark {
+    top: 56%;
+    right: -8%;
+    font-size: clamp(58px, 22vw, 110px);
+    opacity: 0.1;
+  }
+}
+
 /* Contact cards and fields */
 .channel-card {
   border: 1px solid #d9e5e8;
@@ -1284,6 +1293,140 @@ textarea.field-input {
   .nav-links {
     display: none;
   }
+
+  .announce-bar {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .announce-bar span {
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .purity-strip {
+    padding: 24px 16px;
+  }
+
+  .purity-strip-stat {
+    width: 100%;
+    text-align: left;
+  }
+
+  .page-footer {
+    padding: 22px 16px;
+  }
+
+  .footer-links {
+    gap: 10px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-watermark {
+    top: 56%;
+    right: -10%;
+    font-size: clamp(60px, 26vw, 110px);
+    opacity: 0.12;
+  }
+
+  .nav-inner {
+    padding: 0 16px;
+    height: 58px;
+  }
+
+  .logo-name {
+    letter-spacing: 0.12em;
+    font-size: 13px;
+  }
+
+  .page-title {
+    padding: 38px 16px 18px;
+  }
+
+  .page-title p {
+    max-width: 28ch;
+    margin-inline: auto;
+  }
+
+  .count {
+    font-size: 11px;
+  }
+
+  .sort-btn {
+    font-size: 12px;
+  }
+
+  .filter-dropdown {
+    right: -8px;
+    min-width: 180px;
+  }
+
+  .grid-wrapper {
+    padding-bottom: 64px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-info {
+    padding-inline: 14px;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+  .card-subtitle {
+    font-size: 11.5px;
+  }
+
+  .product-card:hover .add-to-wa {
+    opacity: 0;
+  }
+
+  .wa-order-btn {
+    letter-spacing: 0.06em;
+    padding: 10px 14px;
+  }
+
+  .purity-strip {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .purity-strip-stat .big {
+    font-size: 22px;
+  }
+
+  .page-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #wa-float {
+    width: 48px;
+    height: 48px;
+    bottom: 18px;
+    right: 18px;
+  }
 }
 
 /* ── Footer ── */
@@ -1540,5 +1683,249 @@ textarea.field-input {
   .reveal-left {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+/* ==========================================================================
+   Naturesip — Shop page responsive additions
+   Paste these into your global stylesheet (e.g. globals.css), after the
+   existing rules for: announce-bar, toolbar, filter-wrap, product-grid,
+   product-card, purity-strip, wa-float.
+
+   Breakpoints:
+     Desktop  >  1024px  — unchanged, existing 4/6 col toggle
+     Tablet   641–1024px — grid caps at 3 columns, toolbar stays inline
+     Mobile   <= 640px   — 2 columns, stacked toolbar, full-width filter
+     Small    <= 400px   — 1 column, tightened spacing
+   ========================================================================== */
+
+/* -------------------- Announcement bar -------------------- */
+@media (max-width: 640px) {
+  .announce-bar {
+    padding: 10px 44px; /* room for the two arrow buttons without wrapping under them */
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .announce-bar .arr {
+    position: absolute;
+  }
+
+  .announce-bar .arr:first-child {
+    left: 8px;
+  }
+
+  .announce-bar .arr:last-child {
+    right: 8px;
+  }
+}
+
+/* -------------------- Toolbar (count + view toggle + filter) -------------------- */
+@media (max-width: 1024px) {
+  .toolbar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .count {
+    font-size: 13px;
+  }
+
+  /* The 4-col / 6-col desktop density toggle has no meaning once the grid
+     is forced to 1–2 columns below, so it's hidden rather than left as a
+     dead control. */
+  .toolbar-right .view-btn,
+  .toolbar-right .t-divider {
+    display: none;
+  }
+
+  .toolbar-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .filter-wrap {
+    width: 100%;
+  }
+
+  .sort-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* -------------------- Filter & sort dropdown -------------------- */
+@media (max-width: 640px) {
+  .filter-dropdown {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 16px;
+    width: auto;
+    max-height: 60vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.18);
+    /* Slide up like a bottom sheet rather than dropping down under the
+       button, where it would run off the right edge of a narrow screen. */
+    animation: sheet-up 0.18s ease-out;
+  }
+
+  .filter-dropdown-label {
+    padding-top: 14px;
+  }
+
+  .filter-option {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 15px;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- Active filter chip row -------------------- */
+@media (max-width: 640px) {
+  .active-filter-row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* -------------------- Product grid -------------------- */
+@media (max-width: 1024px) {
+  .grid-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 16px;
+  }
+}
+
+/* -------------------- Product card -------------------- */
+@media (max-width: 640px) {
+  .card-image {
+    aspect-ratio: 3 / 4;
+  }
+
+  .badge-purity,
+  .badge-label {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+
+  /* "Order on WhatsApp" is normally a hover reveal; on touch there is no
+     hover state, so it's pinned visible at the bottom of the image
+     instead of requiring a tap-to-hover workaround. */
+  .add-to-wa {
+    opacity: 1;
+    transform: none;
+    position: static;
+    padding: 8px;
+  }
+
+  .wa-order-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .card-info {
+    padding-top: 10px;
+  }
+
+  .card-name {
+    font-size: 14px;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+  }
+
+  .card-price {
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .price-sep {
+    display: none;
+  }
+
+  .price-loyalty {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Single column: the "front/back" hover-swap product photo can afford
+     to run taller and closer to the reference proportions. */
+  .card-image {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* -------------------- Purity strip -------------------- */
+@media (max-width: 768px) {
+  .purity-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 20px;
+  }
+
+  .purity-strip-stat {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .purity-strip-cta {
+    align-self: flex-start;
+  }
+}
+
+/* -------------------- Floating WhatsApp button -------------------- */
+@media (max-width: 640px) {
+  #wa-float {
+    width: 52px;
+    height: 52px;
+    right: 16px;
+    /* Respect the home-indicator / gesture-bar safe area on iOS instead of
+       floating half-hidden behind it. */
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }

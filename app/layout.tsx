@@ -24,8 +24,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Naturesip — The Purest Pour in Soweto",
-  description: "Premium purified water delivered across Soweto.",
+  title: "Naturesip ",
+  description: "Purified water delivered across Soweto.",
 };
 
 export default function RootLayout({
